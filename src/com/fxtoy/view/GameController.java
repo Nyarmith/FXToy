@@ -1,4 +1,4 @@
-package serg.view;
+package com.fxtoy.view;
 
 public class GameController {
 
