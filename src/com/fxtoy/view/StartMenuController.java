@@ -26,8 +26,19 @@ public class StartMenuController {
 	
 	@FXML
 	private void handleStart() {
-		// TODO: validate canvas resolution
-		application.showGame();
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        String MaxResStr = "" + primScreenBounds.getMaxX() + " x " + primScreenBounds.getMaxY() + "\n";
+        int myX = Integer.parseInt(width.getText());
+        int myY = Integer.parseInt(height.getText());
+        if ( myX < primScreenBounds.getMaxX() && myY < primScreenBounds.getMaxY() && myX > 0 && myY > 0){
+        	application.showGame();
+        } else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Error!");
+            alert.setHeaderText("Out of Monitor Bounds");
+            alert.setContentText("Invalid Display Values -- Detected Resolution : " + MaxResStr);
+            alert.showAndWait();
+        }
 	}
 	
 	@FXML
