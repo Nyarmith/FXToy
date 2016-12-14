@@ -6,16 +6,21 @@ import com.fxtoy.view.GameController;
 import com.fxtoy.view.StartMenuController;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
 
-public class MainApplication extends Application {
+public class MainApplication extends Application
+                             implements EventHandler<KeyEvent> {
 	
+	private Stage parameterStage = new Stage();
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 
@@ -25,6 +30,7 @@ public class MainApplication extends Application {
 		this.primaryStage.setTitle("FXToy");
 
 		initRootLayout();
+		initParameterStage();
 		showStartMenu();
 	}
 	
@@ -44,6 +50,21 @@ public class MainApplication extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+	}
+
+	private void initParameterStage() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApplication.class.getResource("../view/Preferences.fxml"));
+			AnchorPane preferences = (AnchorPane) loader.load();
+		
+			Scene scene = new Scene(preferences);
+			parameterStage.setScene(scene);
+			parameterStage.initModality(Modality.WINDOW_MODAL);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void showStartMenu() {
@@ -74,9 +95,26 @@ public class MainApplication extends Application {
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(simulation);
+            rootLayout.getScene().setOnKeyPressed(this);
         } catch (IOException e) {
             e.printStackTrace();
         }	
+	}
+	
+	@Override
+	public void handle(KeyEvent event) {
+		if (event.getCode() == KeyCode.F2 ) {
+			toggleParameterStage();
+		}
+	}
+	
+	private void toggleParameterStage() {
+		if (parameterStage.isShowing()) {
+			parameterStage.hide();
+		}
+		else {
+			parameterStage.show();
+		}
 	}
 	
 	public static void main(String[] args) {
