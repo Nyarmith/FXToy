@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxtoy.view.PreferencesController">
    <children>
       <ButtonBar layoutX="400.0" layoutY="553.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="7.0">
         <buttons>
-          <Button mnemonicParsing="false" text="Apply" />
-            <Button mnemonicParsing="false" text="Close" />
+          <Button mnemonicParsing="false" onAction="#handleApply" text="Apply" />
+            <Button mnemonicParsing="false" onAction="#handleClose" text="Close" />
         </buttons>
       </ButtonBar>
       <GridPane layoutX="14.0" layoutY="14.0" prefHeight="90.0" prefWidth="177.0">
