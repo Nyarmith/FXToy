@@ -2,7 +2,6 @@ package com.fxtoy.view;
 
 import com.fxtoy.application.GameParameters;
 import com.fxtoy.application.MainApplication;
-import com.fxtoy.application.Parameters;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;

@@ -32,21 +32,14 @@ public class PhysGame extends AnimationTimer{
 		if (last_time > 0){
 			dt = timestamp - last_time;
 			updateWorld(dt);
-			//drawAll();
+			drawAll();
 		}
 		last_time = timestamp;
 	}
 	
 	void updateWorld(long dt){
 		//world stuff whatever
-<<<<<<< HEAD
 		double dt_in_seconds = dt / 1e9f;
-=======
-		gc.clearRect(0,0,Parameters.getInstance().screen_width,
-				Parameters.getInstance().screen_height);
-
-		double dt_in_seconds = dt / 10000000.0;
->>>>>>> fix rendering issue
 		for (GameEntity i : myEntities){
 			i.update(dt_in_seconds);
 			//i.drawOnCanvas(gc);    //note this only sends commands and doesn't render yet
@@ -54,7 +47,6 @@ public class PhysGame extends AnimationTimer{
 	}
 	
 	void drawAll(){
-<<<<<<< HEAD
 		gc.setFill(Color.FLORALWHITE);
 		gc.fillRect(0,0,GameParameters.getInstance().screen_width,
 				GameParameters.getInstance().screen_height);
@@ -62,10 +54,6 @@ public class PhysGame extends AnimationTimer{
 			i.drawOnCanvas(gc);    //note this only sends commands and doesn't render yet
 		}
 		//gc.fill();
-=======
-		gc.fill();
-		gc.stroke();
->>>>>>> fix rendering issue
 	}
 	
 	
