@@ -28,13 +28,16 @@ public class PhysGame extends AnimationTimer{
 		if (last_time > 0){
 			dt = timestamp - last_time;
 			updateWorld(dt);
-			drawAll();
+			//drawAll();
 		}
 		last_time = timestamp;
 	}
 	
 	void updateWorld(long dt){
 		//world stuff whatever
+		gc.clearRect(0,0,Parameters.getInstance().screen_width,
+				Parameters.getInstance().screen_height);
+
 		double dt_in_seconds = dt / 10000000.0;
 		for (GameEntity i : myEntities){
 			i.update(dt_in_seconds);
@@ -43,8 +46,6 @@ public class PhysGame extends AnimationTimer{
 	}
 	
 	void drawAll(){
-		gc.clearRect(0,0,Parameters.getInstance().screen_width,
-				Parameters.getInstance().screen_height);
 		gc.fill();
 		gc.stroke();
 	}

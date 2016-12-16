@@ -1,6 +1,7 @@
 package com.fxtoy.view;
 
 import com.fxtoy.application.MainApplication;
+import com.fxtoy.application.Parameters;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
@@ -31,6 +32,8 @@ public class StartMenuController {
         int myX = Integer.parseInt(width.getText());
         int myY = Integer.parseInt(height.getText());
         if ( myX < primScreenBounds.getMaxX() && myY < primScreenBounds.getMaxY() && myX > 0 && myY > 0){
+        	Parameters.getInstance().screen_width = myX;
+        	Parameters.getInstance().screen_height = myY;
         	application.showGame();
         } else {
             Alert alert = new Alert(AlertType.INFORMATION);

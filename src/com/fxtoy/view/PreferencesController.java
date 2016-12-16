@@ -1,5 +1,7 @@
 package com.fxtoy.view;
 
+import com.fxtoy.application.Parameters;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -58,7 +60,16 @@ public class PreferencesController {
         if (input == null || input.length() == 0) {
             errorMessage += "Mouse force value must be non-empty!\n"; 
         }
-        // TODO: input validation
+        else {
+        	try {
+        		if (Double.parseDouble(input) < 0) {
+        			errorMessage += "Mouse force value must be non-negative.\n";
+        		}
+        	}
+        	catch (NumberFormatException e) {
+        		errorMessage += "Mouse force value must be a number!!\n";
+        	}
+        }
         
         input = massField.getText();
         if (input == null || input.length() == 0) {
@@ -66,7 +77,7 @@ public class PreferencesController {
         }
         else {
         	try {
-        		if (Integer.parseInt(input) < 0) {
+        		if (Double.parseDouble(input) < 0) {
         			errorMessage += "Mass value must be non-negative.\n";
         		}
         	}
