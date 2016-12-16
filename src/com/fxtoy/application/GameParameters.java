@@ -1,7 +1,7 @@
 package com.fxtoy.application;
 
 //in-memory copy of the parameters
-public class Parameters {
+public class GameParameters {
 	
 	public double drag;
 	public double mouse_force;
@@ -9,13 +9,13 @@ public class Parameters {
 	public int screen_width;
 	public int screen_height;
 	
-	private Parameters() {}
+	private GameParameters() {}
 	
 	private static class ParamHolder { 
-		private static final Parameters INSTANCE = new Parameters();
+		private static final GameParameters INSTANCE = new GameParameters();
 	}
 	
-	public static Parameters getInstance() {
+	public static GameParameters getInstance() {
 		return ParamHolder.INSTANCE;
 	}
 }

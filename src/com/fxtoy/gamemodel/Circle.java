@@ -1,6 +1,6 @@
 package com.fxtoy.gamemodel;
 
-import com.fxtoy.application.Parameters;
+import com.fxtoy.application.GameParameters;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -10,10 +10,10 @@ public class Circle extends GameEntity {
 	
 	void update(double dt){
 		//could get stuck in walls with this logic but whatever
-		if (position.x-radius < 0 || position.x+radius > Parameters.getInstance().screen_width){
+		if ((position.x-radius < 0) || (position.x+radius > GameParameters.getInstance().screen_width)){
 			velocity.x = -velocity.x;
 		}
-		if (position.y-radius < 0 || position.y+radius > Parameters.getInstance().screen_height){
+		if ((position.y-radius < 0) || (position.y+radius > GameParameters.getInstance().screen_height)){
 			velocity.y = -velocity.y;
 		}
 		
@@ -23,6 +23,6 @@ public class Circle extends GameEntity {
 	void drawOnCanvas(GraphicsContext gc){
 		gc.setFill(Color.GREEN);
 		gc.fillOval(position.x-radius, position.y-radius,
-					radius, radius);
+					radius*2, radius*2);
 	}
 }
