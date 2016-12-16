@@ -1,5 +1,6 @@
 package com.fxtoy.view;
 
+import com.fxtoy.application.GameParameters;
 import com.fxtoy.application.MainApplication;
 import com.fxtoy.application.Parameters;
 
@@ -32,8 +33,10 @@ public class StartMenuController {
         int myX = Integer.parseInt(width.getText());
         int myY = Integer.parseInt(height.getText());
         if ( myX < primScreenBounds.getMaxX() && myY < primScreenBounds.getMaxY() && myX > 0 && myY > 0){
-        	Parameters.getInstance().screen_width = myX;
-        	Parameters.getInstance().screen_height = myY;
+        	//set global parameters
+            GameParameters params = GameParameters.getInstance();
+            params.screen_width  = myX;
+            params.screen_height = myY;
         	application.showGame();
         } else {
             Alert alert = new Alert(AlertType.INFORMATION);
