@@ -6,9 +6,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Circle extends GameEntity {
-	public double radius;
+	public float radius;
 	
-	void update(double dt){
+	void update(float dt){
 		//could get stuck in walls with this logic but whatever
 		if ((position.x-radius < 0) || (position.x+radius > GameParameters.getInstance().screen_width)){
 			velocity.x = -velocity.x;

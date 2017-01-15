@@ -6,8 +6,6 @@ import java.util.List;
 import com.fxtoy.application.GameParameters;
 
 import javafx.animation.AnimationTimer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -21,8 +19,8 @@ public class PhysGame extends AnimationTimer{
 		//TODO -- remove from here
 		gc=g; last_time=0;
 		Circle a = new Circle();
-		a.velocity = new Vec2(20,60);
-		a.position = new Vec2(200,200);
+		a.velocity = new Vector2(20,60);
+		a.position = new Vector2(200,200);
 		a.radius=100;
 		myEntities.add(a);
 	}
@@ -39,7 +37,7 @@ public class PhysGame extends AnimationTimer{
 	
 	void updateWorld(long dt){
 		//world stuff whatever
-		double dt_in_seconds = dt / 1e9f;
+		float dt_in_seconds = dt / 1e9f;
 		for (GameEntity i : myEntities){
 			i.update(dt_in_seconds);
 			//i.drawOnCanvas(gc);    //note this only sends commands and doesn't render yet

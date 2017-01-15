@@ -2,8 +2,6 @@ package com.fxtoy.application;
 
 import java.io.IOException;
 
-import com.fxtoy.gamemodel.PhysGame;
-import com.fxtoy.view.GameController;
 import com.fxtoy.view.StartMenuController;
 
 import javafx.application.Application;
@@ -25,7 +23,7 @@ public class MainApplication extends Application
 	private Stage parameterStage = new Stage();
 	private Stage primaryStage;
 	private BorderPane rootLayout;
-	private Canvas myCanv;
+	private GameLoop gameLoop;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -91,18 +89,16 @@ public class MainApplication extends Application
 	
 	public void showGame() {
         try {
-            // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApplication.class.getResource("../view/Game.fxml"));
             AnchorPane simulation = (AnchorPane) loader.load();
-            // Set person overview into the center of root layout.
+
             rootLayout.setCenter(simulation);
             rootLayout.getScene().setOnKeyPressed(this);
-            myCanv = (Canvas) simulation.getChildren().get(0);
+            Canvas canvas = (Canvas) simulation.getChildren().get(0);
             
-            PhysGame gam = new PhysGame(myCanv.getGraphicsContext2D());
-            gam.start();
-            
+            gameLoop = new GameLoop(canvas.getGraphicsContext2D());
+            gameLoop.start();
         } catch (IOException e) {
             e.printStackTrace();
         }	
